@@ -184,7 +184,7 @@ export default function RegisterForm() {
           มีบัญชีอยู่แล้ว?{" "}
           <a
             href="/login"
-            className="underline underline-offset-4 hover:text-primary"
+            className="underline underline-offset-4"
           >
             เข้าสู่ระบบ
           </a>

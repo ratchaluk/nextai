@@ -16,21 +16,21 @@ const Navbar = async () => {
   });
 
   return (
-    <nav className="h-16 border-b bg-background">
-      <div className="mx-auto flex h-full max-w-(--breakpoint-xl) items-center justify-between px-4 sm:px-6 lg:px-8">
+    <nav className="border-b-[3px] border-black bg-background">
+      <div className="mx-auto flex h-16 max-w-(--breakpoint-xl) items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Logo />
 
         {/* Desktop Menu */}
         <NavMenu className="hidden md:block" />
 
-        <Link href="/cart">
-          <Badge className="p-2 text-md">
+        <Link href="/cart" data-slot="cart-link" className="inline-flex items-center gap-2 text-foreground no-underline">
+          <Badge className="px-3 py-1.5 text-sm">
             <ShoppingBasket /> <CountCartItem /> ชิ้น
           </Badge>
         </Link>
 
         <div className="flex items-center gap-3">
-          
+
           {
             !session && (
               <>
@@ -47,7 +47,7 @@ const Navbar = async () => {
           {
             session && (
               <>
-                <div className="flex items-center mr-4">
+                <div className="hidden items-center font-mono text-sm sm:flex">
                   สวัสดี, {session.user.name}
                 </div>
                 <div>

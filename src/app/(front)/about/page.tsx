@@ -10,20 +10,26 @@ async function ApiVersion() {
   const response = await fetch('https://api.codingthailand.com/api/version');
   const apiInfo = await response.json();
 
-  return <p>API Version: {apiInfo.data.version}</p>;
+  return <p className="font-mono">API Version: {apiInfo.data.version}</p>;
 }
 
 // http://localhost:3000/about
 export default function AboutPage() {
   return (
-    <main>
-      <Suspense fallback={ <AppLoading /> }>
-        <ApiVersion />
-      </Suspense>     
-      <hr />
-      <Link href="/" className="underline">
-        Home Page
-      </Link>
+    <main className="mx-auto max-w-3xl px-6 py-16">
+      <h2 className="font-heading text-4xl leading-[1.1] uppercase sm:text-5xl">
+        เกี่ยวกับเรา
+      </h2>
+
+      <div className="mt-8 border-[3px] border-black bg-card p-8">
+        <Suspense fallback={<AppLoading />}>
+          <ApiVersion />
+        </Suspense>
+      </div>
+
+      <div className="mt-8 border-t-[3px] border-black pt-6">
+        <Link href="/">Home Page</Link>
+      </div>
     </main>
   );
 }

@@ -9,14 +9,19 @@ type Props = {
 
 export default function AppProductCard({ name, price, stock = 0, onAddToCart }: Props) {
   return (
-    <div className="w-60 border border-green-500 rounded-lg p-6 m-6 bg-amber-100">
-      <h2>{name}</h2>
-      <p>ราคา: {price} บาท</p>
+    <div className="w-60 border-[3px] border-black bg-card p-6">
+      <h2 className="font-heading text-lg uppercase">{name}</h2>
+      <p className="mt-2 font-mono text-sm text-muted-foreground">ราคา: {price} บาท</p>
       {
         stock > 0 && (
-          <div>
-            <p>คงเหลือ: {stock}</p>
-            <button onClick={ () => onAddToCart(name) }>เพิ่มลงตะกร้า</button>
+          <div className="mt-4">
+            <p className="font-mono text-sm">คงเหลือ: {stock}</p>
+            <button
+              onClick={ () => onAddToCart(name) }
+              className="mt-3 inline-flex h-9 items-center justify-center rounded-none border-[3px] border-black bg-black px-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-black"
+            >
+              เพิ่มลงตะกร้า
+            </button>
           </div>
         )
       }

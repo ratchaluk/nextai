@@ -15,56 +15,67 @@ export default function CartList() {
   const totalPrice = useCartStore((state) => state.totalPrice());
 
   if (items.length === 0) {
-    return <div className="text-center mt-20">ตะกร้าสินค้าว่างเปล่า...</div>
+    return (
+      <div className="mx-auto mt-20 max-w-2xl border-[3px] border-black bg-card px-8 py-16 text-center">
+        <p className="font-heading text-2xl uppercase">ตะกร้าสินค้าว่างเปล่า</p>
+        <div className="mt-8">
+          <Button asChild variant="outline">
+            <a href="/product" data-slot="button" className="no-underline">ไปเลือกสินค้า</a>
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="mx-auto max-w-4xl mt-20">
-      <h1 className="text-xl mb-4">ตะกร้าสินค้า</h1>
-      <Table>
-        <TableHeader>
+    <div className="mx-auto mt-12 max-w-4xl px-4">
+      <h1 className="font-heading text-4xl uppercase">ตะกร้าสินค้า</h1>
+
+      <div className="mt-6 border-[3px] border-black">
+        <Table>
+          <TableHeader>
             <TableRow>
-                <TableHead>รหัสสินค้า</TableHead>
-                <TableHead>ชื่อสินค้า</TableHead>
-                <TableHead>ราคา</TableHead>
-                <TableHead>จำนวน</TableHead>
-                <TableHead>รวม</TableHead>
-                <TableHead>เครื่องมือ</TableHead>
+              <TableHead>รหัสสินค้า</TableHead>
+              <TableHead>ชื่อสินค้า</TableHead>
+              <TableHead>ราคา</TableHead>
+              <TableHead>จำนวน</TableHead>
+              <TableHead>รวม</TableHead>
+              <TableHead>เครื่องมือ</TableHead>
             </TableRow>
-        </TableHeader>
-        <TableBody>
+          </TableHeader>
+          <TableBody>
             {
-                items.map((i) => (
-                    <TableRow key={i.productId}>
-                        <TableCell>{i.productId}</TableCell>
-                        <TableCell>{i.name}</TableCell>
-                        <TableCell>{i.price}</TableCell>
-                        <TableCell>{i.qty}</TableCell>
-                        <TableCell>{(i.price * i.qty).toFixed(2)}</TableCell>
-                        <TableCell>
-                            <Button variant="destructive" onClick={() => { removeItem(i.productId); } } >
-                                <Trash />
-                            </Button>    
-                        </TableCell>  
-                    </TableRow>
-                ))
+              items.map((i) => (
+                <TableRow key={i.productId}>
+                  <TableCell className="font-mono">{i.productId}</TableCell>
+                  <TableCell>{i.name}</TableCell>
+                  <TableCell className="font-mono">{i.price}</TableCell>
+                  <TableCell>{i.qty}</TableCell>
+                  <TableCell className="font-mono">{(i.price * i.qty).toFixed(2)}</TableCell>
+                  <TableCell>
+                    <Button variant="destructive" size="icon" onClick={() => { removeItem(i.productId); } } aria-label="ลบสินค้า">
+                      <Trash />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
             }
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
+      </div>
 
-      <div className="text-right mt-5">
-          <div className="font-bold text-2xl">
-               รวมทั้งหมด: {totalPrice.toFixed(2)}   
-          </div>  
-          <div className="m-4">
-            <Button className="mr-4" variant="outline" onClick={() => { clearCart(); } }>ลบสินค้าทั้งหมด</Button> 
-            <Button onClick={() => { 
-                clearCart();
-                router.replace('/product');
-             } }>ยืนยันการสั่งซื้อ</Button>
-          </div>
-      </div>      
-
+      <div className="mt-6 flex flex-col items-end gap-4">
+        <div className="font-heading text-3xl uppercase">
+          รวมทั้งหมด: <span className="font-mono">฿{totalPrice.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-wrap items-center justify-end gap-4">
+          <Button variant="outline" onClick={() => { clearCart(); } }>ลบสินค้าทั้งหมด</Button>
+          <Button onClick={() => {
+            clearCart();
+            router.replace('/product');
+          } }>ยืนยันการสั่งซื้อ</Button>
+        </div>
+      </div>
     </div>
   );
 }
