@@ -12,17 +12,17 @@ export const metadata: Metadata = {
   description: "RawBlock brutalism e-commerce",
 };
 
-export default function RootLayout({
+export default function FrontLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <body>
+    <>
       <Suspense fallback={<div className="h-16 border-b-[3px] border-black bg-background" />}>
         <Navbar />
       </Suspense>
       {children}
-    </body>
+    </>
   );
 }
