@@ -20,7 +20,7 @@ const contactInfo = [
   },
   {
     title: "โทรศัพท์",
-    value: "02-123-4567",
+    value: "00-1123-456-7890-1111",
     mono: true,
   },
   {
