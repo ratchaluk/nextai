@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h2 className="font-heading text-4xl leading-[1.1] uppercase sm:text-5xl">
-        เกี่ยวกับเรา
+        เกี่ยวกับเราไหม? เราเกี่ยวแน่นมากนะ
       </h2>
 
       <div className="mt-8 border-[3px] border-black bg-card p-8">
