@@ -34,9 +34,9 @@ export default async function CustomersPage({
   return (
     <main className="p-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">รายชื่อลูกค้า</h1>
+        <h1 className="text-2xl font-bold">Customer List</h1>
         <Button asChild>
-          <Link href="/customers/add">เพิ่มลูกค้าใหม่</Link>
+            <Link href="/customers/add">Add New Customer</Link>
         </Button>
       </div>
 
@@ -44,9 +44,9 @@ export default async function CustomersPage({
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
-            <TableHead>ชื่อ</TableHead>
-            <TableHead>ที่อยู่</TableHead>
-            <TableHead>เบอร์โทรศัพท์</TableHead>
+             <TableHead>Name</TableHead>
+             <TableHead>Address</TableHead>
+             <TableHead>Phone Number</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -62,7 +62,7 @@ export default async function CustomersPage({
           ) : (
             <TableRow>
               <TableCell colSpan={4} className="text-center">
-                ไม่พบข้อมูลลูกค้า
+                 No customer data found
               </TableCell>
             </TableRow>
           )}
@@ -76,11 +76,11 @@ export default async function CustomersPage({
             asChild
             className="px-3 py-1"
           >
-            <Link href={`/customers?page=${page - 1}`}>ก่อนหน้า</Link>
+             <Link href={`/customers?page=${page - 1}`}>Previous</Link>
           </Button>
         )}
         <div className="flex items-center px-4 text-sm">
-          หน้า {page} จาก {totalPages || 1}
+           Page {page} of {totalPages || 1}
         </div>
         {page < totalPages && (
           <Button
@@ -88,7 +88,7 @@ export default async function CustomersPage({
             asChild
             className="px-3 py-1"
           >
-            <Link href={`/customers?page=${page + 1}`}>ถัดไป</Link>
+             <Link href={`/customers?page=${page + 1}`}>Next</Link>
           </Button>
         )}
       </div>

@@ -26,27 +26,27 @@ export default async function AddCustomerPage() {
     <main className="p-8 flex justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>เพิ่มลูกค้าใหม่</CardTitle>
+           <CardTitle>Add New Customer</CardTitle>
         </CardHeader>
         <CardContent>
           <form action={createCustomer} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">ชื่อลูกค้า</Label>
-              <Input id="name" name="name" placeholder="ชื่อ-นามสกุล" required />
+               <Label htmlFor="name">Customer Name</Label>
+               <Input id="name" name="name" placeholder="First name - Last name" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="address">ที่อยู่</Label>
-              <Input id="address" name="address" placeholder="ที่อยู่สำหรับจัดส่ง" required />
+               <Label htmlFor="address">Address</Label>
+               <Input id="address" name="address" placeholder="Shipping address" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">เบอร์โทรศัพท์</Label>
+               <Label htmlFor="phone">Phone Number</Label>
               <Input id="phone" name="phone" placeholder="08x-xxx-xxxx" required />
             </div>
             <div className="flex gap-2 justify-end pt-4">
               <Button variant="outline" asChild>
-                <Link href="/customers">ยกเลิก</Link>
+                <Link href="/customers">Cancel</Link>
               </Button>
-              <Button type="submit">บันทึก</Button>
+               <Button type="submit">Save</Button>
             </div>
           </form>
         </CardContent>
